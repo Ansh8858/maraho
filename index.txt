@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        #message, #response, #loveMessage, #proposal {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Your Name</h1>
+        <form onsubmit="checkName(event)">
+            <input type="text" id="name" placeholder="Your Name">
+            <button type="submit">Submit</button>
+        </form>
+        <div id="loveMessage">
+            <p>Manpreet, you mean the world to me. I can't imagine my life without you.</p>
+        </div>
+        <div id="proposal">
+            <h2>Message</h2>
+            <p>Will you be mine?</p>
+            <button onclick="showResponse('yes')">Yes</button>
+            <button onclick="showResponse('no')">No</button>
+        </div>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        function checkName(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            if (name.toLowerCase() === 'manpreet') {
+                document.getElementById('loveMessage').style.display = 'block';
+                document.getElementById('proposal').style.display = 'block';
+                document.getElementById('response').style.display = 'none';
+            } else {
+                document.getElementById('proposal').style.display = 'none';
+                document.getElementById('response').style.display = 'block';
+                document.getElementById('loveMessage').style.display = 'none';
+                document.getElementById('response').innerHTML = '<p>Thank you for visiting!<br>We appreciate your time and interest.<br>Stay happy and keep smiling!</p>';
+            }
+        }
+
+        function showResponse(answer) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.style.display = 'block';
+            document.getElementById('proposal').style.display = 'none';
+            if (answer === 'yes') {
+                responseDiv.innerHTML = '<p>Great! Here is my Instagram ID: <strong>@it_anime_ansh</strong><br>And my Snapchat number: <strong>8858320735</strong></p>';
+            } else {
+                responseDiv.innerHTML = '<p>Goodbye then!</p>';
+            }
+        }
+    </script>
+</body>
+</html>
